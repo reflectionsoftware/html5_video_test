@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>HTML5 Video Player</title>
+  <title>Video.js | HTML5 Video Player</title>
 
   <style>
-    body {background-color:black;}
+    body {background-color:black;}    
   </style>
+  
+  <!-- Chang URLs to wherever Video.js files will be hosted -->
+  <link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
+  
+  <!-- video.js must be in the <head> for older IEs to work. -->
+  <script src="http://vjs.zencdn.net/c/video.js"></script>
   
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
   
@@ -15,35 +21,36 @@
   <video id="example_video_1" autoplay class="video-js vjs-default-skin" preload="auto" data-setup="{}">
     <source src="https://s3.amazonaws.com/uploads.hipchat.com/18407/85517/5jt4vdgod8w5mt6/sample.mp4" type='video/mp4' />    
   </video>
-  
   <br/><br/>
-  
   <a href="#" id="pause">Pause</a>
   <a href="#" id="play" class="hidden">Play</a>
   <a href="#" id="fullScreen">Full Screen</a>
   
   <script type="text/javascript">
-    var myPlayer = document.getElementById("#example_video_1");    
-
-    $(document).ready(function() {        
+    var myPlayer = _V_("example_video_1");  
+    
+    myPlayer.addEventListener("loadedmetadata", function() {
+      alert("Meta data for video loaded");        
+    });    
+    
+    $(document).ready(function() {
+      $('#play').toggle();
       
-      myPlayer.addEventListener("loadedmetadata", function() {
-        alert("Meta data for video loaded");        
-      });
-      
-      $('#play').toggle();      
       $('#pause').click(function() {
         myPlayer.pause();        
         $('#play').toggle();
         $(this).toggle();
-      });      
+      });
+      
       $('#play').click(function() {
         myPlayer.play();        
         $('#pause').toggle();
         $(this).toggle();
       });
+
       $('#fullScreen').click(function() {
-        myPlayer.requestFullScreen();
+        if (myPlayer.requestFullScreen())
+          myPlayer.enterFullScreen();
       });
     });
   </script>
