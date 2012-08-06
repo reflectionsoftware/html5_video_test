@@ -24,8 +24,10 @@
   
   <script type="text/javascript">
     var myPlayer = $("#example_video_1");      
-    
-    $(document).ready(function() {
+    myPlayer.addEventListener('loadedmetadata', function() {
+        alert('Duration: ' + videoPlayer.duration);
+    });
+    $(document).ready(function() {        
       $('#play').toggle();      
       $('#pause').click(function() {
         myPlayer.pause();        
