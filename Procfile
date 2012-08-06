@@ -1,1 +1,0 @@
-web: bundle exec rakcup config.ru -p $PORT
