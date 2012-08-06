@@ -4,7 +4,8 @@
   <title>HTML5 Video Player</title>
 
   <style>
-    body {background-color:black;}    
+    body {background-color:black;color:white;}    
+    
   </style>
     
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
@@ -19,11 +20,12 @@
   <a href="#" id="pause">Pause</a>
   <a href="#" id="play" class="hidden">Play</a>
   <a href="#" id="fullScreen">Full Screen</a>
-  
+  <br/><br/>
+  <span id="video_duration"></span>
   <script type="text/javascript">
     var myPlayer = $("#example_video_1");      
     myPlayer[0].addEventListener("loadedmetadata", function() {
-      alert((this).duration);
+      $("#video_duration").text(Math.round((this).duration) + " second video");
     });
    
     $(document).ready(function() {
