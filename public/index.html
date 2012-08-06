@@ -21,26 +21,26 @@
   <a href="#" id="fullScreen">Full Screen</a>
   
   <script type="text/javascript">
-    var myPlayer = $("#example_video_1")[0];      
+    var myPlayer = $("#example_video_1");      
+    myPlayer[0].onloadedmetadata = alert("Meta");
    
     $(document).ready(function() {
       $('#play').toggle();
       
       $('#pause').click(function() {
-        myPlayer.pause();        
+        myPlayer[0].pause();        
         $('#play').toggle();
         $(this).toggle();
       });
       
       $('#play').click(function() {
-        myPlayer.play();        
+        myPlayer[0].play();        
         $('#pause').toggle();
         $(this).toggle();
       });
 
       $('#fullScreen').click(function() {
-        if (myPlayer.requestFullScreen())
-          myPlayer.enterFullScreen();
+        myPlayer[0].requestFullScreen();
       });
     });
   </script>
