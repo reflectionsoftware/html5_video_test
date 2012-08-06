@@ -22,7 +22,9 @@
   
   <script type="text/javascript">
     var myPlayer = $("#example_video_1");      
-    myPlayer[0].onloadedmetadata = alert("Meta");
+    myPlayer[0].addEventListener("loadedmetadata", function() {
+      alert((this).duration);
+    });
    
     $(document).ready(function() {
       $('#play').toggle();
