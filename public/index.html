@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Video.js | HTML5 Video Player</title>
+
+  <style>
+    body {background-color:black;}    
+  </style>
+  
+  <!-- Chang URLs to wherever Video.js files will be hosted -->
+  <link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
+  
+  <!-- video.js must be in the <head> for older IEs to work. -->
+  <script src="http://vjs.zencdn.net/c/video.js"></script>
+  
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  
+</head>
+<body>
+
+  <video id="example_video_1" autoplay class="video-js vjs-default-skin" preload="auto" width="720" height="480" data-setup="{}">
+    <source src="sample.mp4" type='video/mp4' />    
+  </video>
+  <br/><br/>
+  <a href="#" id="pause">Pause</a>
+  <a href="#" id="play" class="hidden">Play</a>
+  <a href="#" id="fullScreen">Full Screen</a>
+  
+  <script type="text/javascript">
+    var myPlayer = _V_("example_video_1");      
+    
+    $(document).ready(function() {
+      $('#play').toggle();
+      
+      $('#pause').click(function() {
+        myPlayer.pause();        
+        $('#play').toggle();
+        $(this).toggle();
+      });
+      
+      $('#play').click(function() {
+        myPlayer.play();        
+        $('#pause').toggle();
+        $(this).toggle();
+      });
+
+      $('#fullScreen').click(function() {
+        if (myPlayer.requestFullScreen())
+          myPlayer.enterFullScreen();
+      });
+    });
+  </script>
+</body>
+</html>
