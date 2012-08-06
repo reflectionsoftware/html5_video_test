@@ -7,12 +7,6 @@
     body {background-color:black;}    
   </style>
   
-  <!-- Chang URLs to wherever Video.js files will be hosted -->
-  <link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
-  
-  <!-- video.js must be in the <head> for older IEs to work. -->
-  <script src="http://vjs.zencdn.net/c/video.js"></script>
-  
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
   
 </head>
@@ -45,8 +39,7 @@
       });
 
       $('#fullScreen').click(function() {
-        if (myPlayer.requestFullScreen())
-          myPlayer.enterFullScreen();
+        myPlayer.requestFullScreen();
       });
     });
   </script>
